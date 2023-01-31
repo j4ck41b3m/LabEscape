@@ -5,6 +5,7 @@ using UnityEngine;
 public class lanzarGranada : MonoBehaviour
 {
     public GameObject granadaPrefab;
+    public GameObject salida;
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class lanzarGranada : MonoBehaviour
 
     private void Lanzar()
     {
-        GameObject nuevaGranada = Instantiate(granadaPrefab, transform.position, transform.rotation);
-        nuevaGranada.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 50 * Time.deltaTime, ForceMode.Impulse);
+        GameObject nuevaGranada = Instantiate(granadaPrefab, salida.transform.position, salida.transform.rotation);
+        nuevaGranada.GetComponent<Rigidbody>().AddForce(salida.transform.forward * 300 * Time.deltaTime, ForceMode.VelocityChange);
     }
 }

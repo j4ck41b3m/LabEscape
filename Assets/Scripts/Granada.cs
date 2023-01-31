@@ -14,6 +14,11 @@ public class Granada : MonoBehaviour
     void Start()
     {
         countDown = delay;
+        
+    }
+    private void Awake()
+    {
+        Invoke("InWorld", 0.4f);
     }
 
     // Update is called once per frame
@@ -42,5 +47,10 @@ public class Granada : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    public void InWorld()
+    {
+        gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
     }
 }

@@ -10,6 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 300f;
     public LayerMask groundMask;
 
+    public bool isSprinting;
+    public float sprintingSpeedMultiplier = 5f;
+    public float sprintSpeed = 1f;
+
+    public float staminaUseAmount = 5;
+    private Slide staminaSlider;
+
     //GroundCheck
 
     public Transform groundCheck;
@@ -40,12 +47,30 @@ Vector3 velocity;
             velocity.y = -2;
         }
        
+        
 
         //Salto
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
+        }
+    }
+
+    private void RunCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            isSprinting = !isSprinting;
+            if (isSprinting)
+            {
+                staminaSlider.UseStamina(staminaUseAmount);
+            }
+            else
+            {
+                staminaSlider.UseStamina(0);
+            }
+
         }
     }
 }
