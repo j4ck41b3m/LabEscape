@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController characterController;
     public float speed = 10f;
     public float gravity = -9.8f;
-    public float jumpHeight = 300f;
+    public float jumpHeight = 0f;
     public LayerMask groundMask;
+    public int jumpcount;
 
     public bool isSprinting;
     public float sprintingSpeedMultiplier = 5f;
@@ -40,21 +41,39 @@ Vector3 velocity;
         characterController.Move(velocity * Time.deltaTime);
 
         //GroundCheck
-
+        
         isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2;
         }
-       
-        
+
+
 
         //Salto
+        if (isGrounded)
+        {
+            jumpcount = 0;
+        }
+        else
+        {
+            if (jumpcount < 2 && Input.GetKeyDown(KeyCode.Space))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
+                jumpcount++;
 
+            }
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
+            jumpcount++;
+            print("salto");
         }
+
+       
+
     }
 
     private void RunCheck()
