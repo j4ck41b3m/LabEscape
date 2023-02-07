@@ -7,6 +7,9 @@ TagManager:
   - Destruir
   - SueloMuerte
   - AmmoBox
+  - metal
+  - red
+  - blue
   layers:
   - Default
   - TransparentFX
