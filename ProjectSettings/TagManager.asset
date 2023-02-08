@@ -10,6 +10,8 @@ TagManager:
   - metal
   - red
   - blue
+  - fog
+  - enemy
   layers:
   - Default
   - TransparentFX

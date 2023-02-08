@@ -36,7 +36,7 @@ public class Magnet : MonoBehaviour
 
             if (Time.time > shotRateTime && GameManager.instance.gunAmmo > 0)
             {
-                GameManager.instance.gunAmmo--;
+                //GameManager.instance.gunAmmo--;
                 //shotSource.PlayOneShot(shotsound);
                 GameObject newBullet = Instantiate(Minus, spawnPoint.position, spawnPoint.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce * Time.deltaTime, ForceMode.Impulse);
@@ -48,7 +48,7 @@ public class Magnet : MonoBehaviour
         {
             if (Time.time > shotRateTime && GameManager.instance.gunAmmo > 0)
             {
-                GameManager.instance.gunAmmo--;
+                //GameManager.instance.gunAmmo--;
                 //shotSource.PlayOneShot(shotsound);
                 GameObject newBullet = Instantiate(Plus, spawnPoint.position, spawnPoint.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce * Time.deltaTime, ForceMode.Impulse);
@@ -62,8 +62,11 @@ public class Magnet : MonoBehaviour
 
             if (Input.GetButton("Fire3"))
         {
-            // blue.transform.Translate(red.transform.position * Time.deltaTime);
-            blue.transform.position = Vector3.MoveTowards(blue.transform.position, red.transform.position, 1 + Time.deltaTime);
+            //blue.transform.Translate(red.transform.localPosition * Time.deltaTime);
+            blue.transform.position = Vector3.MoveTowards(blue.transform.position, red.transform.position, 0.5f +  Time.deltaTime);
+            
         }
     }
+
+   
 }

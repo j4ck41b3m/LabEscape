@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Brand : MonoBehaviour
@@ -29,18 +30,21 @@ public class Brand : MonoBehaviour
         {
             other.gameObject.tag = tag;
 
-
             if (tick)
             {
                 GameObject redsmoke = Instantiate(energyR, other.transform.position, other.transform.rotation);
                 redsmoke.transform.parent = other.transform;
+            other.AddComponent<Destruct>();
 
-            }
-            else
+        }
+        else
             {
                 GameObject bluesmoke = Instantiate(energyB, other.transform.position, other.transform.rotation);
                 bluesmoke.transform.parent = other.transform;
-            }
+
+        }
+        Destroy(gameObject);
+
         }
             
     }
