@@ -62,9 +62,13 @@ public class Magnet : MonoBehaviour
 
             if (Input.GetButton("Fire3"))
         {
+            if (blue != null && red != null)
+            {
+                blue.transform.position = Vector3.MoveTowards(blue.transform.position, red.transform.position, 0.5f + Time.deltaTime);
+
+            }
             //blue.transform.Translate(red.transform.localPosition * Time.deltaTime);
-            blue.transform.position = Vector3.MoveTowards(blue.transform.position, red.transform.position, 0.5f +  Time.deltaTime);
-            
+
         }
     }
 

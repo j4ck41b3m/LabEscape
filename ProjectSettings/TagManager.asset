@@ -12,6 +12,7 @@ TagManager:
   - blue
   - fog
   - enemy
+  - weapon
   layers:
   - Default
   - TransparentFX

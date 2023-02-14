@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponSwitch : MonoBehaviour
 {
     public GameObject[] weapons;
-    private int selectedWeapon = 0;
+    public int selectedWeapon = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,9 @@ public class WeaponSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //print(weapons.Length);
         int previousWeapon = selectedWeapon;
+        print(previousWeapon);
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             selectedWeapon = NextWeapon();
@@ -28,7 +30,7 @@ public class WeaponSwitch : MonoBehaviour
         {
             SelectedWeapon();
         }
-
+        WeaponNumeric();
     }
 
     private void WeaponNumeric()
@@ -43,10 +45,7 @@ public class WeaponSwitch : MonoBehaviour
             selectedWeapon = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            selectedWeapon = 2;
-        }
+        
 
     }
 
@@ -54,7 +53,7 @@ public class WeaponSwitch : MonoBehaviour
     {
         if (selectedWeapon <= 0)
         {
-            return weapons.Length;
+            return weapons.Length -1;
         }
         else
         {
@@ -63,7 +62,7 @@ public class WeaponSwitch : MonoBehaviour
     }
     private int NextWeapon()
     {
-        if (selectedWeapon >= weapons.Length)
+        if (selectedWeapon >= weapons.Length -1)
         {
             return 0;
         }
@@ -75,6 +74,7 @@ public class WeaponSwitch : MonoBehaviour
 
     void SelectedWeapon()
     {
+       // print("hi");
         int i = 0;
         foreach (Transform weapon in transform) 
         {
@@ -91,6 +91,7 @@ public class WeaponSwitch : MonoBehaviour
                 }
             }
         }
+        i++;
     }
 
 }
