@@ -24,7 +24,7 @@ public class Magnet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         red = GameObject.FindGameObjectWithTag("red");
         blue = GameObject.FindGameObjectWithTag("blue");

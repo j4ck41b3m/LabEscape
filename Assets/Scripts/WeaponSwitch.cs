@@ -17,7 +17,7 @@ public class WeaponSwitch : MonoBehaviour
     {
         //print(weapons.Length);
         int previousWeapon = selectedWeapon;
-        print(previousWeapon);
+        //print(previousWeapon);
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             selectedWeapon = NextWeapon();
@@ -76,22 +76,24 @@ public class WeaponSwitch : MonoBehaviour
     {
        // print("hi");
         int i = 0;
-        foreach (Transform weapon in transform) 
+        print(i);
+        foreach (GameObject weapon in weapons) 
         {
             if(weapon.CompareTag("weapon"))
             {
                 if (i == selectedWeapon)
                 {
-                    weapon.gameObject.SetActive(true);
+                    weapon.SetActive(true);
                 }
                 else
                 {
-                    weapon.gameObject.SetActive(false);
+                    weapon.SetActive(false);
 
                 }
             }
+            i++;
+
         }
-        i++;
     }
 
 }

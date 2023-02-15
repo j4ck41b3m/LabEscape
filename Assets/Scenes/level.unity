@@ -985,7 +985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &136564215
 Transform:
   m_ObjectHideFlags: 0
@@ -7701,6 +7701,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 5097930736968686125}
   - {fileID: 136564214}
+  selectedWeapon: 0
 --- !u!1 &5097930736968686125
 GameObject:
   m_ObjectHideFlags: 0
@@ -7719,7 +7720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5097930736969172493
 Transform:
   m_ObjectHideFlags: 0

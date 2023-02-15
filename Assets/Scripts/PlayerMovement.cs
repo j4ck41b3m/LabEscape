@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 Vector3 velocity;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Movimiento
         float x = Input.GetAxis("Horizontal");
