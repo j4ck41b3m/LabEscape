@@ -31,7 +31,8 @@ public class Magnet : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            
+            print("biii");
+
 
 
             if (Time.time > shotRateTime && GameManager.instance.gunAmmo > 0)
@@ -46,6 +47,7 @@ public class Magnet : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire2"))
         {
+            print("biii");
             if (Time.time > shotRateTime && GameManager.instance.gunAmmo > 0)
             {
                 //GameManager.instance.gunAmmo--;
