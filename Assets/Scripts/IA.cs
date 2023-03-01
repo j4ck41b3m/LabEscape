@@ -6,22 +6,39 @@ using UnityEngine.AI;
 public class IA : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Transform destino, destino2;
+    public Transform destino;
+    public Transform destino2;
+    private Transform destinoActual;
+
     // Start is called before the first frame update
     void Start()
     {
-        agent.destination = destino.transform.position;
+        destino.parent = null;
+       // destino2.parent = null;
+        destinoActual = destino;
+        agent.destination = destinoActual.transform.position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.destination = destino.transform.position;
         float distancia = Vector3.Distance(transform.position, destino.transform.position);
         if (distancia < 3)
         {
-            agent.destination = destino2.transform.position;
+            destinoActual = destino2;
+            Debug.Log(1);
         }
+
+        distancia = Vector3.Distance(transform.position, destino2.transform.position);
+        if (distancia < 3)
+        {
+            destinoActual = destino;
+            Debug.Log(2);
+        }
+
+        agent.destination = destinoActual.transform.position;
+
 
     }
 }

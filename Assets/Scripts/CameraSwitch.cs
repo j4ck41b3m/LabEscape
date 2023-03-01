@@ -17,7 +17,7 @@ public class CameraSwitch : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {

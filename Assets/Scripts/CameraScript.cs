@@ -7,7 +7,6 @@ public class CameraScript : MonoBehaviour
     public float mouseSensitivity = 2000f;
     public Transform playerBody;
     float xRotation = 0;
-    float yRotation = 0;
     // Start is called before the first frame update
     void Start()
     {
