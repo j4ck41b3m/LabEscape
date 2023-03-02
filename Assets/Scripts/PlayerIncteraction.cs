@@ -17,7 +17,14 @@ public class PlayerIncteraction : MonoBehaviour
             Destroy(other.gameObject);
            // textAmmo.text = other.GetComponent<AmmoBox>().ammo.ToString();
         }
-        
+        else
+        if (other.gameObject.CompareTag("Health"))
+        {
+            GameManager.instance.vidas += other.gameObject.GetComponent<AmmoBox>().life;
+            Destroy(other.gameObject);
+
+        }
+
         if (other.gameObject.CompareTag("SueloMuerte"))
         {
             GameManager.instance.LoseHealth(3);

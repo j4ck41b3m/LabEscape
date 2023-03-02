@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 3023356404119702905}
   - component: {fileID: 3023356404119702909}
   - component: {fileID: 3023356404119702906}
-  - component: {fileID: 8361488471732172016}
+  - component: {fileID: 2057810334858201049}
   m_Layer: 0
   m_Name: Evil ball
   m_TagString: Untagged
@@ -9637,7 +9637,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3023356404119702886}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
@@ -9658,7 +9658,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8361488471732172016
+--- !u!114 &2057810334858201049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9667,7 +9667,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3023356404119702886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679a1a411f6be2447b4c0c1179ad97ed, type: 3}
+  m_Script: {fileID: 11500000, guid: a0914eb954ea149438d3ccfa1858cc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8616311963738959008

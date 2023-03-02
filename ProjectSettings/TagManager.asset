@@ -13,6 +13,7 @@ TagManager:
   - fog
   - enemy
   - weapon
+  - Health
   layers:
   - Default
   - TransparentFX

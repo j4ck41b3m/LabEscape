@@ -34,6 +34,7 @@ public class Magnet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Sway();
         red = GameObject.FindGameObjectWithTag("red");
         blue = GameObject.FindGameObjectWithTag("blue");
         if (blue == null)
@@ -113,6 +114,30 @@ public class Magnet : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRoation, Time.deltaTime * swayAmount);
 
 
+    }
+
+    public void Nullyfy()
+    {
+        GameObject[] fogs = GameObject.FindGameObjectsWithTag("fog");
+        for (int i = 0; i < fogs.Length; i++)
+        {
+            Destroy(fogs[i]);
+        }
+
+        GameObject[] reds = GameObject.FindGameObjectsWithTag("red");
+        for (int i = 0; i < reds.Length; i++)
+        {
+            reds[i].tag = "metal";
+        }
+
+        GameObject[] blues = GameObject.FindGameObjectsWithTag("blue");
+        for (int i = 0; i < blues.Length; i++)
+        {
+            blues[i].tag = "metal";
+        }
+
+        blue = null;
+        red = null;
     }
 
 

@@ -6,7 +6,7 @@ public class WeaponSwitch : MonoBehaviour
 {
     public GameObject[] weapons;
     public int selectedWeapon = 0;
-    public GameObject blast, blasttext, magnet;
+    public GameObject blast, blasttext, magnet, magstat;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +35,12 @@ public class WeaponSwitch : MonoBehaviour
 
         if(selectedWeapon == 0)
         {
+            magstat.GetComponent<Magnet>().Nullyfy();
             blast.SetActive(true);
             blasttext.SetActive(true);
 
             magnet.SetActive(false);
+            
         }
         else if (true)
         {
@@ -46,6 +48,7 @@ public class WeaponSwitch : MonoBehaviour
             blasttext.SetActive(false);
 
             magnet.SetActive(true);
+
         }
     }
 

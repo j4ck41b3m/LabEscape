@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     //Singleton
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI lifeText;
+    public float timer;
     public static GameManager instance
     {
         get; private set; 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
         ammoText.text = gunAmmo.ToString();
         lifeText.text = vidas.ToString();
         if (gunAmmo < 0)
@@ -36,10 +38,16 @@ public class GameManager : MonoBehaviour
 
     public void LoseHealth(int healthtoReduce)
     {
-        vidas -= healthtoReduce;
-        if (vidas <= 0)
+        if (timer > 0.5f)
         {
-            SceneManager.LoadScene(0);
+            vidas -= healthtoReduce;
+            if (vidas <= 0)
+            {
+                vidas = 0;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            timer = 0;
         }
+       
     }
 }

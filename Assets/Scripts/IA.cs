@@ -10,11 +10,12 @@ public class IA : MonoBehaviour
     public Transform destino2;
     public Transform Target, spawnPoint1, spawnPoint2;
     private Transform destinoActual;
-    public GameObject body, bullet;
+    public GameObject body, bullet, ammo, health;
     public Animator anim;
     public bool chasing;
     private float distPlayer;
     public float shotForce = 50f;
+    public int vidas;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,8 @@ public class IA : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
         distPlayer = Vector3.Distance(transform.position, Target.transform.position);
         if (!chasing)
         {
@@ -83,9 +86,21 @@ public class IA : MonoBehaviour
 
         agent.destination = destinoActual.transform.position;
     }
+
+    public void Hurt()
+    {
+        vidas--;
+        if (vidas <= 0)
+        {
+            vidas = 0;
+            Death();
+        }
+    }
     public void Death()
     {
-        Destroy(gameObject, 0.5f);
+        Instantiate(health, spawnPoint1.position, spawnPoint1.rotation);
+        Instantiate(ammo, spawnPoint2.position, spawnPoint2.rotation);
+        Destroy(gameObject, 0.1f);
     }
 
     public void shoot()

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private void Awake()
+    {
+        Destroy(gameObject, 2f);
+    }
+   
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Destruir"))
+        if (collision.gameObject.CompareTag("metal"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            collision.gameObject.GetComponent<IA>().Hurt();
+            Destroy(gameObject, 0.1f);
+
         }
     }
 }
