@@ -9,16 +9,15 @@ public class Granada : MonoBehaviour
     public float radius = 5f;
     public float fuerzaExplosion = 70f;
     bool exploded = false;
-    public GameObject explosion;
+    public GameObject explosion, soundy;
     // Start is called before the first frame update
     void Start()
     {
         countDown = delay;
-        
     }
     private void Awake()
     {
-        Invoke("InWorld", 0.4f);
+        Invoke("InWorld", 0.15f);
     }
 
     // Update is called once per frame
@@ -29,7 +28,7 @@ public class Granada : MonoBehaviour
         {
             exploded = true;
             GameObject boom = Instantiate(explosion, transform.position, transform.rotation);
-
+            Instantiate(soundy, transform.position, transform.rotation);
             Exploded(); 
 
         }
@@ -40,9 +39,16 @@ public class Granada : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach ( var rangeObjec in colliders)
         {
+
             Rigidbody rb = rangeObjec.GetComponent<Rigidbody>();
             if (rb != null)
             {
+                if (rangeObjec.CompareTag("metal"))
+                {
+                    rangeObjec.GetComponent<IA>().Death();
+
+                }
+
                 rb.AddExplosionForce(fuerzaExplosion * 10, transform.position, radius);
             }
             Destroy(gameObject);

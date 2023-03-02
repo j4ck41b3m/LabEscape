@@ -6,6 +6,7 @@ public class lanzarGranada : MonoBehaviour
 {
     public GameObject granadaPrefab;
     public GameObject salida;
+    public int fuerza;
     
     // Start is called before the first frame update
     void Start()
@@ -13,7 +14,7 @@ public class lanzarGranada : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
 
@@ -26,6 +27,6 @@ public class lanzarGranada : MonoBehaviour
     private void Lanzar()
     {
         GameObject nuevaGranada = Instantiate(granadaPrefab, salida.transform.position, salida.transform.rotation);
-        nuevaGranada.GetComponent<Rigidbody>().AddForce(salida.transform.forward * 300 * Time.deltaTime, ForceMode.VelocityChange);
+        nuevaGranada.GetComponent<Rigidbody>().AddForce(salida.transform.forward * fuerza * Time.deltaTime, ForceMode.VelocityChange);
     }
 }
