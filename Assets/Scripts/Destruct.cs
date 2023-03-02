@@ -18,7 +18,7 @@ public class Destruct : MonoBehaviour
     void Update()
     {
         blue = GameObject.FindGameObjectWithTag("blue");
-        Bfog = blue.transform.GetChild(0).gameObject;
+        //Bfog = blue.transform.GetChild(0).gameObject;
     }
 
     private void OnCollisionEnter(Collision collision)

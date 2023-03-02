@@ -7,10 +7,12 @@ public class Magnet : MonoBehaviour
 {
     public GameObject blue, red;
     public bool thing;
+    private float swayAmount = 8;
 
     public GameObject Minus, Plus;
 
     public Transform spawnPoint;
+    private Quaternion startRotation;
 
     public float soundTime;
     public float shotForce = 50f;
@@ -98,5 +100,20 @@ public class Magnet : MonoBehaviour
         }
     }
 
-   
+    private void Sway()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+        Quaternion yAngle = Quaternion.AngleAxis(mouseY * -1.25f, Vector3.up);
+        Quaternion xAngle = Quaternion.AngleAxis(mouseX * -1.25f, Vector3.left);
+
+        Quaternion targetRoation = startRotation * xAngle * yAngle;
+
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRoation, Time.deltaTime * swayAmount);
+
+
+    }
+
+
 }

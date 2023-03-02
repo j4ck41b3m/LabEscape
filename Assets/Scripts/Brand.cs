@@ -6,7 +6,7 @@ using UnityEngine;
 public class Brand : MonoBehaviour
 {
     public bool tick;
-    private string tag;
+    private string tagu;
     public GameObject energyR, energyB;
     // Start is called before the first frame update
     void Start()
@@ -18,9 +18,9 @@ public class Brand : MonoBehaviour
     void Update()
     {
         if (tick)
-            tag = "red";
+            tagu = "red";
         else
-            tag = "blue";
+            tagu = "blue";
 
     }
 
@@ -28,7 +28,7 @@ public class Brand : MonoBehaviour
     {
         if (other.CompareTag("metal"))
         {
-            other.gameObject.tag = tag;
+            other.gameObject.tag = tagu;
 
             if (tick)
             {
