@@ -49,7 +49,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 6
-  m_Acceleration: 8
+  m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 80
   m_StoppingDistance: 5
@@ -82,10 +82,12 @@ MonoBehaviour:
   bullet: {fileID: 3023356404119702886, guid: fe163521ac2e5d94daa3352c1ad8008d, type: 3}
   ammo: {fileID: 2275093038140886800, guid: 9cbcfea4b56708b419fcca18ea542dd7, type: 3}
   health: {fileID: 1204435060334351135, guid: 309364b989520f646aec89fe6a02185f, type: 3}
+  boom: {fileID: 4572775446937865885, guid: 604c19a1a6c43564388eeb7620ff5f3c, type: 3}
   anim: {fileID: 0}
   chasing: 0
   shotForce: 600
-  vidas: 5
+  vidas: 8
+  partes: []
 --- !u!54 &4711284293942038028
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -453,7 +455,7 @@ GameObject:
   - component: {fileID: 4715535646430675114}
   m_Layer: 0
   m_Name: attackBot
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -17,8 +17,16 @@ public class EvilBlast : MonoBehaviour
        
             if (other.CompareTag("Player"))
             {
-                GameManager.instance.LoseHealth(1);
+                GameManager.instance.LoseHealth(2);
                 Destroy(gameObject);
+            }
+            else
+            {
+               if (!other.CompareTag("evil"))
+               {
+                  Destroy(gameObject);
+
+               }
             }
        
 

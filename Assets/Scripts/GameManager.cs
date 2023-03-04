@@ -9,10 +9,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     //Singleton
-    public TextMeshProUGUI ammoText;
     public GameObject panel;
-    public TextMeshProUGUI lifeText;
+    public GameObject[] enemies;
+    public TextMeshProUGUI ammoText, lifeText, bombstext, scoretext;
     public float timer;
+    public int initEnemies, currEnemies;
     private bool paused;
     public static GameManager instance
     {
@@ -21,20 +22,34 @@ public class GameManager : MonoBehaviour
 
     public int gunAmmo = 10;
     public int vidas = 10;
+    public int granadas = 3;
 
     private void Awake()
     {
         instance = this;
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
+        initEnemies = enemies.Length;
     }
 
     void Update()
     {
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
+        currEnemies = enemies.Length;
+
         timer += Time.deltaTime;
         ammoText.text = gunAmmo.ToString();
         lifeText.text = vidas.ToString();
+        bombstext.text = granadas.ToString();
+        scoretext.text = currEnemies.ToString() + "/" + initEnemies.ToString(); 
+
         if (gunAmmo < 0)
         {
             gunAmmo = 0;
+        }
+
+        if (granadas < 0)
+        {
+            granadas = 0;
         }
 
         if (paused == false)

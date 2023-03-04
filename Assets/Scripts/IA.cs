@@ -10,16 +10,18 @@ public class IA : MonoBehaviour
     public Transform destino2;
     public Transform Target, spawnPoint1, spawnPoint2;
     private Transform destinoActual;
-    public GameObject body, bullet, ammo, health;
+    public GameObject body, bullet, ammo, health, boom;
     public Animator anim;
     public bool chasing;
     private float distPlayer;
     public float shotForce = 50f;
     public int vidas;
+    public Component[] partes;
 
     // Start is called before the first frame update
     void Start()
     {
+        partes = gameObject.GetComponentsInChildren<Renderer>();
         destino.parent = null;
         destino2.parent = null;
         destinoActual = destino;
@@ -49,7 +51,7 @@ public class IA : MonoBehaviour
         {
             chasing = true;
         }
-        if (distPlayer > 40)
+        if (distPlayer > 50)
         {
             chasing = false;
         }
@@ -64,12 +66,14 @@ public class IA : MonoBehaviour
             anim.Play("shoot");
         }
         else
-            anim.Play("breathe");
+            anim.Play("breathing");
 
     }
 
     public void Patrol()
     {
+        anim.Play("breathing");
+
         float distPunto = Vector3.Distance(transform.position, destino.transform.position);
         if (distPunto < 3)
         {
@@ -95,11 +99,24 @@ public class IA : MonoBehaviour
             vidas = 0;
             Death();
         }
+        foreach (Renderer part in partes)
+        {
+            part.material.color = Color.blue;
+        }
+        Invoke("Normal", 0.4f);
     }
     public void Death()
     {
-        Instantiate(health, spawnPoint1.position, spawnPoint1.rotation);
-        Instantiate(ammo, spawnPoint2.position, spawnPoint2.rotation);
+        bool nuuh = false;
+        if (nuuh == false)
+        {
+            Instantiate(health, spawnPoint1.position, spawnPoint1.rotation);
+            Instantiate(ammo, spawnPoint2.position, spawnPoint2.rotation);
+            Instantiate(boom, gameObject.transform.position, gameObject.transform.rotation);
+            nuuh = true;
+        }
+        
+
         Destroy(gameObject, 0.1f);
     }
 
@@ -114,4 +131,14 @@ public class IA : MonoBehaviour
         Destroy(newBullet2, 3f);
 
     }
+
+    public void Normal()
+    {
+        foreach (Renderer part in partes)
+        {
+            part.material.color = Color.white;
+        }
+    }
+
+   
 }

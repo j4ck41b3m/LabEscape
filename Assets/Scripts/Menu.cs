@@ -22,4 +22,19 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void Bye()
+    {
+        Application.Quit();
+    }
+
+    public void Beggining()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

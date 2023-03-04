@@ -20,12 +20,18 @@ public class lanzarGranada : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            Lanzar();
+            if (GameManager.instance.granadas > 0)
+            {
+                Lanzar();
+            }
+            
         }
     }
 
     private void Lanzar()
     {
+        GameManager.instance.granadas--;
+
         GameObject nuevaGranada = Instantiate(granadaPrefab, salida.transform.position, salida.transform.rotation);
         nuevaGranada.GetComponent<Rigidbody>().AddForce(salida.transform.forward * fuerza * Time.deltaTime, ForceMode.VelocityChange);
     }
