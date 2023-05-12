@@ -17,6 +17,8 @@ public class IA : MonoBehaviour
     public float shotForce = 50f;
     public int vidas;
     public Component[] partes;
+    public GameObject eye1, eye2;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +31,15 @@ public class IA : MonoBehaviour
         Target = GameObject.Find("Player").transform;
         chasing = false;
         anim = body.GetComponent<Animator>();
+      
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        timer += Time.deltaTime;
+       eye1.transform.GetComponent<Renderer>().material.color = Color.red;
+        eye2.transform.GetComponent<Renderer>().material.color = Color.red;
 
         distPlayer = Vector3.Distance(transform.position, Target.transform.position);
         if (!chasing)
@@ -93,31 +98,34 @@ public class IA : MonoBehaviour
 
     public void Hurt()
     {
-        vidas--;
-        if (vidas <= 0)
+        if (timer >= 0.1)
         {
-            vidas = 0;
-            Death();
+            timer = 0;
+            vidas--;
+            if (vidas <= 0)
+            {
+                vidas = 0;
+                Death();
+            }
+            foreach (Renderer part in partes)
+            {
+                part.material.color = Color.blue;
+            }
+            Invoke("Normal", 0.4f);
         }
-        foreach (Renderer part in partes)
-        {
-            part.material.color = Color.blue;
-        }
-        Invoke("Normal", 0.4f);
+        
     }
     public void Death()
     {
-        bool nuuh = false;
-        if (nuuh == false)
-        {
-            Instantiate(health, spawnPoint1.position, spawnPoint1.rotation);
-            Instantiate(ammo, spawnPoint2.position, spawnPoint2.rotation);
-            Instantiate(boom, gameObject.transform.position, gameObject.transform.rotation);
-            nuuh = true;
-        }
-        
-
+        Invoke("Drop", 0.09f);
         Destroy(gameObject, 0.1f);
+    }
+
+    public void Drop()
+    {
+        Instantiate(health, spawnPoint1.position, spawnPoint1.rotation);
+        Instantiate(ammo, spawnPoint2.position, spawnPoint2.rotation);
+        Instantiate(boom, gameObject.transform.position, gameObject.transform.rotation);
     }
 
     public void shoot()
