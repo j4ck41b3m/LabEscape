@@ -52,11 +52,11 @@ public class IA : MonoBehaviour
             Chase();
         }
         
-        if (distPlayer < 20)
+        if (distPlayer < 15)
         {
             chasing = true;
         }
-        if (distPlayer > 50)
+        if (distPlayer > 35)
         {
             chasing = false;
         }
